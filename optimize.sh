@@ -51,6 +51,12 @@ if [ ! -f /www/server/panel/data/not_workorder.pl ]; then
 fi
 echo "已关闭活动推荐与在线客服."
 
+echo "" > /www/server/panel/script/site_task.py
+chattr +i /www/server/panel/script/site_task.py
+rm -rf /www/server/panel/logs/request/*
+chattr +i -R /www/server/panel/logs/request
+echo "已去除搜集信息后门."
+
 /etc/init.d/bt restart
 
 echo -e "=================================================================="
