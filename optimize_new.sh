@@ -17,7 +17,7 @@ JS_file="/www/server/panel/BTPanel/static/bt.js";
 if [ `grep -c "<script src=\"/static/bt.js\"></script>" $Layout_file` -eq '0' ];then
 	sed -i '/<\/body>/i <script src="/static/bt.js"></script>' $Layout_file;
 fi;
-wget -q https://raw.githubusercontent.com/chenjinnian/bt_clean/master/bt_new.js -O $JS_file;
+wget -q https://raw.githubusercontents.com/chenjinnian/bt_clean/master/bt_new.js -O $JS_file;
 echo "已去除各种计算题与延时等待."
 
 sed -i '/def get_pay_type(self,get):/a \ \ \ \ \ \ \ \ return [];' /www/server/panel/class/ajax.py
@@ -46,11 +46,11 @@ if [ ! -f /www/server/panel/data/not_workorder.pl ]; then
 fi
 echo "已关闭活动推荐与在线客服."
 
-echo "" > /www/server/panel/script/site_task.py
-chattr +i /www/server/panel/script/site_task.py
-rm -rf /www/server/panel/logs/request/*
-chattr +i -R /www/server/panel/logs/request
-echo "已去除搜集信息后门."
+#echo "" > /www/server/panel/script/site_task.py
+#chattr +i /www/server/panel/script/site_task.py
+#rm -rf /www/server/panel/logs/request/*
+#chattr +i -R /www/server/panel/logs/request
+#echo "已去除搜集信息后门."
 
 /etc/init.d/bt restart
 
